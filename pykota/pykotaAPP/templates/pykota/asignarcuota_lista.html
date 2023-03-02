@@ -1,0 +1,99 @@
+{% extends 'pykota/base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+
+{% block content %}
+<br>
+<button type="button" class="btn btn-dark" data-toggle="modal" data-target="#myModal">Asignar Cuota</button><br><br>
+
+<form method="get">
+    {{ filter.form.as_p }}
+    <button type="submit">Search</button>
+  </form>
+  <ul>
+
+    <table class="table table-bordered table-dark">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Usuario</th>
+      <th scope="col">Impresora</th>
+      <th scope="col">Softlimit</th>
+      <th scope="col">Hardlimit</th>
+    </tr>
+  </thead>
+
+  <tbody>
+ {% for f in filter.qs %}
+    <tr>
+      <th scope="row">-</th>
+	    <td>{{ f.userid }}</td>
+      <td>{{ f.printerid }}</td>
+      <td>{{ f.softlimit }}</td>
+      <td>{{ f.hardlimit }}</td>
+    </tr>
+{% endfor %}
+  </tbody>
+
+</table>
+
+     {% for message in messages %}
+        {% if message.tags == 'success'%}
+                    <div class="alert alert-success">
+                        <a class="close" href="#" data-dismiss="alert"></a>
+                        {{ message }}
+                    </div>
+        {% elif message.tags == 'info' %}
+                    <div class="alert alert-info">
+                        <a class="close" href="#" data-dismiss="alert"></a>
+                        {{ message }}
+                    </div>
+        {% endif %}
+            {% endfor %}
+
+ <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content -->
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Asignar Grupo a Usuario</h4>
+           <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <form method="POST" class="" enctype="multipart/form-data">
+      {% csrf_token %}
+      <div class="row">
+      <div class="col-8">
+        {{ form.userid|as_crispy_field }}
+      </div>
+
+        <div class="col-8">
+        {{ form.printerid|as_crispy_field }}
+      </div>
+
+      <div class="col-8">
+        {{ form.softlimit|as_crispy_field }}
+      </div>
+
+      <div class="col-8">
+        {{ form.hardlimit|as_crispy_field }}
+      </div>
+
+
+
+  </div>
+        <button type="submit" class="save btn btn-dark">Guardar</button>
+    </form>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+</div>
+
+{% endblock %}
+

@@ -1,0 +1,33 @@
+{% extends 'pykota/base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block content %}
+<br>
+<a href="{% url 'asignarcouta_lista' %}" class="btn btn-dark"> Volver </a><br>
+    <form method="POST" class="formulario" enctype="multipart/form-data">
+<h1 style="text-align: center;">Asignar Cuota</h1>
+    	{% csrf_token %}
+      <div class="row">
+      <div class="col-8">
+        {{ form.userid|as_crispy_field }}
+      </div>
+
+        <div class="col-8">
+        {{ form.printerid|as_crispy_field }}
+      </div>
+
+      <div class="col-8">
+        {{ form.softlimit|as_crispy_field }}
+      </div>
+
+      <div class="col-8">
+        {{ form.hardlimit|as_crispy_field }}
+      </div>
+</div>
+
+        <button type="submit" class="save btn btn-dark">Guardar</button>
+    </form>
+	
+			
+{% endblock %}

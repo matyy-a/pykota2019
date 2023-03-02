@@ -1,0 +1,71 @@
+.content {
+  width:50%;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+.save {
+    float: right;
+}
+
+th, thead, td, tr th {
+    text-align: center;
+}
+
+.table-dark.table-bordered {
+    border: 0;
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+button, input, optgroup, select, textarea {
+
+    margin: 1%;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+
+}
+
+.formulario{
+  color: #BCBCBC;border-radius: 40px;  
+  position: relativate;
+  display: inline-block;
+  padding: 20px 60px;
+  color: var(--black);
+  font-weight: 700;
+  text-transform: uppercase;
+  text-decoration: none;
+  background: var(--white);
+  transition: color 0.5s, background 0.5s;
+  margin-left: 30%;
+  margin-bottom: 5px;
+  font-size: 1em;
+  min-width: 100px;
+  max-width: 500px;
+  text-align: left;
+  float:left;
+
+}
+
+.formulariologin{
+  color: #BCBCBC;border-radius: 50px;  
+  position: relativate;
+  display: inline-block;
+  padding: 20px 60px;
+  color: var(--black);
+  font-weight: 700;
+  text-transform: uppercase;
+  text-decoration: none;
+  background: var(--white);
+  transition: color 0.5s, background 0.5s;
+  margin-left: 35%;
+  margin-bottom: 5px;
+  font-size: 1em;
+  min-width: 100px;
+  max-width: 4000px;
+  text-align: left;
+  float:left;
+
+}

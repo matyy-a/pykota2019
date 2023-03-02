@@ -1,0 +1,62 @@
+.passwordreset{
+  color: #BCBCBC;border-radius: 50px;  
+  position: relativate;
+  display: inline-block;
+  padding: 20px 60px;
+  color: var(--black);
+  font-weight: 700;
+  text-transform: uppercase;
+  text-decoration: none;
+  background: var(--white);
+  transition: color 0.5s, background 0.5s;
+  margin-left: 23%;
+  margin-bottom: 5px;
+  font-size: 1em;
+  min-width: 100px;
+  max-width: 4000px;
+  text-align: left;
+  float:left;
+
+}
+
+.passwordresetdone{
+  color: #BCBCBC;border-radius: 50px;  
+  position: relativate;
+  display: inline-block;
+  padding: 20px 60px;
+  color: var(--black);
+  font-weight: 700;
+  text-transform: uppercase;
+  text-decoration: none;
+  background: var(--white);
+  transition: color 0.5s, background 0.5s;
+  margin-left: 0%;
+  margin-bottom: 5px;
+  font-size: 1em;
+  min-width: 100px;
+  max-width: 4000px;
+  text-align: left;
+  float:left;
+
+}
+
+.passwordresetcomplete{
+  color: #BCBCBC;border-radius: 50px;  
+  position: relativate;
+  display: inline-block;
+  padding: 20px 60px;
+  color: var(--black);
+  font-weight: 700;
+  text-transform: uppercase;
+  text-decoration: none;
+  background: var(--white);
+  transition: color 0.5s, background 0.5s;
+  margin-left: 15%;
+  margin-bottom: 5px;
+  font-size: 1em;
+  min-width: 100px;
+  max-width: 4000px;
+  text-align: left;
+  float:left;
+
+}

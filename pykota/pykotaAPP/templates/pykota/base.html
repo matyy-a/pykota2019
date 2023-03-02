@@ -1,0 +1,141 @@
+{% load static %}
+{% load crispy_forms_tags %}
+<html>
+    <head>
+        <title>Pykota Interfaz</title>
+        <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="{% static 'css/pykota.css' %}">
+        <link rel="stylesheet" href="{% static 'css/pwreset.css' %}">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
+
+
+<style>
+body {
+  background-color: #D3D3D3;
+  width:100%;
+  margin-left:auto;
+  margin-right:auto;
+}
+</style>
+
+<script>
+$(document).ready(function(){
+  $("#myBtn").click(function(){
+    $("#myModal").modal();
+  });
+});
+</script>
+
+<style>
+  .modal-header, h4, .close {
+    background-color: darkgrey;
+    color:white !important;
+    text-align: right;
+    font-size: 30px;
+  }
+  .modal-footer {
+    background-color: #f9f9f9;
+  }
+  </style>
+
+    </head>
+<body>
+
+<div>
+<nav class="navbar navbar-expand-md navbar-danger bg-danger">
+    <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+        <ul class="navbar-nav mr-auto">
+    {% if user.is_authenticated %}
+    <li class="nav-item dropdown ">
+      <a class="nav-link dropdown-toggle text-light" href="#" id="navbardrop" data-toggle="dropdown">
+        Usuario
+      </a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="{% url 'usuario_lista' %}">Listar Usuarios</a>
+        <a class="dropdown-item" href="">Usuarios por impresora</a>
+      </div>
+    </li>
+
+
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle text-light" href="#" id="navbardrop" data-toggle="dropdown">
+        Impresoras
+      </a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="{% url 'impresora_lista' %}">Listar Impresoras</a>
+        <a class="dropdown-item" href="{% url 'asignarcuota_lista' %}">Asignar Cuota</a>
+      </div>
+    </li>
+
+  <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle text-light" href="#" id="navbardrop" data-toggle="dropdown">
+        Grupos
+      </a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="{% url 'grupo_lista' %}">Listar Grupos</a>
+        <a class="dropdown-item" href="{% url 'grupo-usuario_lista' %}">Asignar Usuarios a Grupos</a>
+      </div>
+    </li>
+
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle text-light" href="#" id="navbardrop" data-toggle="dropdown">
+        Reportes
+      </a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="">Impresiones por Impresora</a>
+        <a class="dropdown-item" href="">Impresiones por Usuario</a>
+      </div>
+    </li>
+
+    <li class="nav-item dropdown " >
+      <a class="nav-link dropdown-toggle text-light" href="#" id="navbardrop" data-toggle="dropdown" align ="right">
+        Configuraciones
+      </a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="">Listar usuarios del sistema</a>
+        <a class="dropdown-item" href="">Crear Usuarios Administradores</a>
+        <a class="dropdown-item" href="">Logs del sistema</a>
+        <a class="dropdown-item" href="">Reiniciar Contadores</a>
+        <a class="dropdown-item" href="">CUPS</a>
+      </div>
+    </li>
+    {% endif %}
+
+        </ul>
+    </div>
+    <div class="mx-auto order-0">
+        <a class="navbar-brand mx-auto">{% if user.is_authenticated %} Hola {{ user.username }}  {% endif %}</a> 
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
+    <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+        <ul class="navbar-nav ml-auto">
+            {% if user.is_authenticated %}
+            <li class="nav-item">
+                <a class="nav-link text-light" href="{% url 'logout' %}">Desconectarse</a>
+            </li>
+            {% endif %}
+        </ul>
+    </div>
+</nav>
+</div>
+
+<br>
+
+    <div class= "content container">
+            {% block content %}
+            {% endblock %}
+    </div>
+
+
+
+</body>
+
+</html>
+

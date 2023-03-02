@@ -1,0 +1,83 @@
+{% extends 'pykota/base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+
+{% block content %}
+<br>
+<button type="button" class="btn btn-dark" data-toggle="modal" data-target="#myModal">Añadir Impresora</button><br><br>
+    <table class="table table-bordered table-dark">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Impresora</th>
+      <th scope="col">Descripción</th>
+      <th scope="col">Editar</th>
+      <th scope="col">Eliminar</th>
+    </tr>
+  </thead>
+
+  <tbody>
+ {% for impresora in impresoras %}
+    <tr>
+      <th scope="row">-</th>
+	    <td>{{ impresora.printername }}</td>
+      <td>{{ impresora.description }}</td>
+      <td><a href="{% url 'impresora_editar' pk=impresora.pk %}"><button type="button" class="btn btn-light"> <i class="icon ion-md-create"></i></button></a></td>
+      <td><a onclick="return confirm('¿Estás seguro de que quieres eliminarlo?')" href="{% url 'impresora_borrar' pk=impresora.pk %}"> <button type="button-borrar" class="btn btn-light" > <i class="icon ion-md-backspace"></i> </button> </a></td>
+    </tr>
+{% endfor %}
+  </tbody>
+
+</table>
+
+     {% for message in messages %}
+        {% if message.tags == 'success'%}
+                    <div class="alert alert-success">
+                        <a class="close" href="#" data-dismiss="alert"></a>
+                        {{ message }}
+                    </div>
+        {% elif message.tags == 'info' %}
+                    <div class="alert alert-info">
+                        <a class="close" href="#" data-dismiss="alert"></a>
+                        {{ message }}
+                    </div>
+        {% endif %}
+            {% endfor %}
+
+ <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content -->
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Impresora</h4>
+           <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <form method="POST" class="" enctype="multipart/form-data">
+      {% csrf_token %}
+      <div class="row">
+      <div class="col-8">
+        {{ form.printername|as_crispy_field }}
+      </div>
+      <div class="col-8">
+        {{ form.description|as_crispy_field }}
+      </div>
+
+
+
+  </div>
+        <button type="submit" class="save btn btn-dark">Guardar</button>
+    </form>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+</div>
+
+{% endblock %}
+
